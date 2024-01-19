@@ -27,9 +27,9 @@ jobs:
       - name: Build and test
         run: |
           docker compose -f compose.ci.yaml up --build -d
-          docker compose -f compose.ci.yaml exec php vendor/bin/phpunit
+          docker compose -f compose.ci.yaml exec vendor/bin/phpunit
         env:
           DATABASE_URL: postgres://postgres:password@postgres:5431/postgres
 
       - name: Shutdown containers
-        run: docker-compose -f compose.ci.yaml down
+        run: docker compose -f compose.ci.yaml down
