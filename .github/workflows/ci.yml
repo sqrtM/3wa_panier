@@ -26,10 +26,10 @@ jobs:
 
       - name: Build and test
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
-          docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec php php bin/phpunit
+          docker-compose -f compose.yml -f docker-compose.ci.yml up --build -d
+          docker-compose -f compose.yml -f docker-compose.ci.yml exec php php bin/phpunit
         env:
-          DATABASE_URL: postgres://postgres:password@postgres:5432/postgres
+          DATABASE_URL: postgres://postgres:password@postgres:5431/postgres
 
       - name: Shutdown containers
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml down
