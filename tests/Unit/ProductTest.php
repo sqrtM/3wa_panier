@@ -20,7 +20,7 @@ class ProductTest extends TestCase
 
     public function testSetName()
     {
-        self::assertEquals(1, 1);
+        self::assertEquals(1, 2);
     }
 
     public function testSetPrice()

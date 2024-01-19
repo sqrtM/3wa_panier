@@ -7,3 +7,4 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/var/www:cached
+    command: php bin/phpunit --verbose --no-interaction
