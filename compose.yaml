@@ -32,4 +32,4 @@ services:
     ports:
       - "5431:5432"
     volumes:
-      - ./database_data:/var/lib/postgresql/data:rw
+      - ./.docker/database_data:/var/lib/postgresql/data:rw
