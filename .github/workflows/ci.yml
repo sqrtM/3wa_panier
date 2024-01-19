@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
+      postgres_panier:
         image: postgres:16
         env:
           POSTGRES_USER: postgres
