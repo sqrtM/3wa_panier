@@ -26,13 +26,8 @@ jobs:
 
       - name: Build and test
         run: |
-          docker-compose -f compose.ci.yaml up --build -d
-          docker-compose -f compose.ci.yaml exec test sh -c "php bin/phpunit --verbose --no-interaction"
-          phpunit_exit_code=$?
-          if [ $phpunit_exit_code -ne 0 ]; then
-            echo "PHPUnit tests failed"
-            exit 1
-          fi
+          docker compose -f compose.ci.yaml up --build -d
+          docker compose -f compose.ci.yaml exec test sh -c "php bin/phpunit"
         env:
           DATABASE_URL: postgres://postgres:password@postgres:5431/postgres
 
