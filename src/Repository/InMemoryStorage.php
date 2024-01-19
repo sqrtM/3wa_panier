@@ -9,8 +9,13 @@ use App\Entity\Product;
 
 class InMemoryStorage implements Storage
 {
-    private array $carts = [];
+    private array $carts;
     private array $products = [];
+
+    public function __construct()
+    {
+        $this->carts = [new Cart($this)];
+    }
 
     public function setValue(int $cartId, Product $product, int $quantity): void
     {
@@ -18,24 +23,30 @@ class InMemoryStorage implements Storage
 
     public function restore(int $cartId, Product $product, int $quantity): void
     {
+        $this->carts[$cartId - 1]->setSessionProducts($product, $quantity);
     }
 
     public function reset(int $cartId): void
     {
+        $this->carts[$cartId - 1]->resetSession();
     }
 
     public function total(int $cartId): float
     {
-        return 0;
+        return array_sum(array_map(function ($p) {
+            $p->getPrice();
+        }, $this->carts[$cartId - 1]->getSessionProducts()));
     }
 
     public function initCart(): int
     {
-        return 0;
+        $this->carts[] = new Cart($this);
+        return count($this->carts);
     }
 
     public function initProduct(string $name, float $price): int
     {
-        return 0;
+        $this->products[] = new Product('New Product', 10.00, $this);
+        return count($this->products);
     }
 }
