@@ -9,8 +9,8 @@ use App\Entity\Product;
 
 class InMemoryStorage implements Storage
 {
-    private array $carts;
-    private array $products = [];
+    public array $carts;
+    public array $products = [];
 
     public function __construct()
     {
@@ -19,6 +19,9 @@ class InMemoryStorage implements Storage
 
     public function setValue(int $cartId, Product $product, int $quantity): void
     {
+        $cart = new Cart($this);
+        $cart->setSessionProducts($product, $quantity);
+        $this->carts[$cartId - 1] = $cart;
     }
 
     public function restore(int $cartId, Product $product, int $quantity): void
