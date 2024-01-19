@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Repository;
 
+use App\Entity\Product;
 use App\Repository\InMemoryStorage;
 use App\Repository\Storage;
 use PHPUnit\Framework\TestCase;
@@ -20,23 +21,26 @@ class InMemoryStorageTest extends TestCase
 
     public function testSetValue()
     {
+        //$p = new Product("hello", 10.0, $this->storage);
+        //$this->storage->setValue(1, $p, 2);
+        //self::assertEquals(20, $this->storage->total(1));
     }
 
     public function testRestore()
     {
-        //todo!
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 
     public function testReset()
     {
-        //todo!
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 
     public function testTotal()
     {
-        //todo!
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 }

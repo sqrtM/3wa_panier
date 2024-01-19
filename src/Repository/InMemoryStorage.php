@@ -14,7 +14,6 @@ class InMemoryStorage implements Storage
 
     public function __construct()
     {
-        $this->carts = [new Cart($this)];
     }
 
     public function setValue(int $cartId, Product $product, int $quantity): void

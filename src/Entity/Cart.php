@@ -14,7 +14,7 @@ class Cart
     public function __construct(
         private readonly Storage $storage,
     ) {
-        //$this->id = $this->storage->initCart();
+        $this->id = $this->storage->initCart();
     }
 
     public function getId(): int

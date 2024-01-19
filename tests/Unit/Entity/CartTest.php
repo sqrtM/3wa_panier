@@ -20,16 +20,19 @@ class CartTest extends TestCase
 
     public function testBuy()
     {
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 
     public function testReset()
     {
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 
     public function testRestore()
     {
+        // rewrite bc memory overflow...
         self::assertEquals(1, 1);
     }
 
