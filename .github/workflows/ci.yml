@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  run-ci:
     runs-on: ubuntu-latest
 
     services:
@@ -31,7 +31,7 @@ jobs:
         run: docker compose -f compose.ci.yaml up --build -d
 
       - name: Test
-        run: docker compose -f compose.ci.yaml exec -T test sh -c "cd /var/www && vendor/bin/phpunit"
+        run: docker compose -f compose.ci.yaml exec test vendor/bin/phpunit
 
       - name: Shutdown containers
         run: docker compose -f compose.ci.yaml down
