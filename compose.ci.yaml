@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./.docker/database_data:/var/lib/postgresql/data:rw
+
+  test:
+    build:
+      context: .docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www:cached
+    command: php bin/phpunit
