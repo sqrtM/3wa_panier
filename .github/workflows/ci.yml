@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: postgres
+        ports:
+          - "5431:5432"
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and test
+        run: |
+          docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
+          docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec php php bin/phpunit
+        env:
+          DATABASE_URL: postgres://postgres:password@postgres:5432/postgres
+
+      - name: Shutdown containers
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml down
