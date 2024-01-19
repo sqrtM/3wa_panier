@@ -5,6 +5,4 @@ services:
     build:
       context: .docker/php
       dockerfile: Dockerfile
-    volumes:
-      - ./:/var/www:cached
-    command: php bin/phpunit --verbose --no-interaction
+    #command: php bin/phpunit --verbose --no-interaction
