@@ -11,5 +11,9 @@ RUN docker-php-ext-install intl
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
+COPY . .
+RUN composer install --no-scripts --no-autoloader --no-progress
+RUN composer dump-autoload --optimize --no-scripts
+
 CMD ["php-fpm"]
 EXPOSE 9000
