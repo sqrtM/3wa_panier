@@ -5,3 +5,5 @@ services:
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
+    environment:
+      DATABASE_URL: "postgresql://postgres:password@postgres_panier:5432/postgres?serverVersion=16&charset=utf8"

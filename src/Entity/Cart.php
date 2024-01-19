@@ -23,18 +23,27 @@ class Cart
 
     public function buy(Product $product, int $amount)
     {
-        $this->storage->setValue($this, $product, $amount);
+        $this->storage->setValue($this->id, $product, $amount);
     }
 
     public function reset(): void
     {
+        $this->storage->reset($this->id);
     }
 
-    public function restore()
+    /**
+     * Removes a product from the cart
+     * @param Product $product
+     * @param int $amount
+     * @return void
+     */
+    public function restore(Product $product, int $amount): void
     {
+        $this->storage->restore($this->id, $product, $amount);
     }
 
-    public function total()
+    public function total(): void
     {
+        $this->storage->total($this->id);
     }
 }

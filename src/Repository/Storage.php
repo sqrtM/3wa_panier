@@ -7,9 +7,12 @@ use App\Entity\Product;
 
 interface Storage
 {
-    public function setValue(Cart $cart, Product $product, int $quantity): void;
-    public function restore(): void;
-    public function reset(): void;
-    public function total(): int;
+    public function setValue(int $cartId, Product $product, int $quantity): void;
+
+    public function restore(int $cartId, Product $product, int $quantity): void;
+    public function reset(int $cartId): void;
+    public function total(int $cartId): float;
     public function initCart(): int;
+    public function initProduct(string $name, float $price): int;
+
 }
