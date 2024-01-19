@@ -11,12 +11,12 @@ class Product
     private readonly int $id;
 
     public function __construct(
-        private readonly string $name,
-        private readonly float $price,
+        private string $name,
+        private float $price,
         private readonly Storage $storage,
     )
     {
-        $this->id = $this->storage->initProduct($this->name, $this->price);
+        //$this->id = $this->storage->initProduct($this->name, $this->price);
     }
 
     public function getId(): int
@@ -29,8 +29,16 @@ class Product
         return $this->name;
     }
 
+    public function setName(string $name) {
+        $this->name = $name;
+    }
+
     public function getPrice(): float
     {
         return $this->price;
+    }
+
+    public function setPrice(float $price) {
+        $this->price = $price;
     }
 }

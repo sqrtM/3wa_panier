@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\InMemoryStorage;
+use App\Repository\Storage;
 
 class Cart
 {
@@ -12,9 +12,9 @@ class Cart
     private readonly array $products;
 
     public function __construct(
-        private readonly InMemoryStorage $storage,
+        private readonly Storage $storage,
     ) {
-        $this->id = $this->storage->initCart();
+        //$this->id = $this->storage->initCart();
     }
 
     public function getId(): int

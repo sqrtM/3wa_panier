@@ -24,16 +24,19 @@ class InMemoryStorageTest extends TestCase
 
     public function testRestore()
     {
+        //todo!
         self::assertEquals(1, 1);
     }
 
     public function testReset()
     {
+        //todo!
         self::assertEquals(1, 1);
     }
 
     public function testTotal()
     {
+        //todo!
         self::assertEquals(1, 1);
     }
 }
