@@ -27,7 +27,7 @@ jobs:
       - name: Build and test
         run: |
           docker compose -f compose.ci.yaml up --build -d
-          docker compose -f compose.ci.yaml exec test sh -c "php bin/phpunit"
+          docker compose -f compose.ci.yaml exec test sh -c "vendor/bin/phpunit"
         env:
           DATABASE_URL: postgres://postgres:password@postgres:5431/postgres
 
