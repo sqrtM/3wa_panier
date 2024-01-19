@@ -15,5 +15,7 @@ COPY . .
 RUN composer install --no-scripts --no-autoloader --no-progress
 RUN composer dump-autoload --optimize --no-scripts
 
+RUN php bin/console doctrine:migrations:migrate --no-interaction
+
 CMD ["php-fpm"]
 EXPOSE 9000
