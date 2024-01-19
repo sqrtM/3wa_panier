@@ -28,7 +28,7 @@ jobs:
         run: docker compose -f compose.ci.yaml up --build -d
 
       - name: Test
-        run: docker compose -f compose.ci.yaml exec test vendor/bin/phpunit
+        run: docker-compose -f compose.ci.yaml exec test sh -c "cd /var/www && vendor/bin/phpunit"
 
       - name: Shutdown containers
         run: docker compose -f compose.ci.yaml down
