@@ -24,12 +24,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build and test
-        run: |
-          docker compose -f compose.ci.yaml up --build -d
-          docker compose -f compose.ci.yaml exec vendor/bin/phpunit
-        env:
-          DATABASE_URL: postgres://postgres:password@postgres:5431/postgres
+      - name: Build
+        run: docker compose -f compose.ci.yaml up --build -d
+
+      - name: Test
+        run: docker compose -f compose.ci.yaml exec vendor/bin/phpunit
 
       - name: Shutdown containers
         run: docker compose -f compose.ci.yaml down
