@@ -24,6 +24,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Composer Install
+        run: composer install
+
       - name: Build
         run: docker compose -f compose.ci.yaml up --build -d
 
