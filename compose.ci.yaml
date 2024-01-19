@@ -5,4 +5,3 @@ services:
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
-    command: php bin/console doctrine:migrations:migrate --env=test --no-interaction
